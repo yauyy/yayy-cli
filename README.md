@@ -31,7 +31,7 @@ yayy create <project-name>
 ```txt
 解决：地址要保证使用的是https模式，地址加前缀。
 例如：
-direct:https://github.com/usename/XXX.git
+direct:https://github.com/username/XXX.git
 ```
 
 ### 2.Error: 'git checkout' failed with status 1
@@ -39,6 +39,6 @@ direct:https://github.com/usename/XXX.git
 ```txt
 解决：下载一个指定分支。
 例如：
-direct:<https://github.com/usename/XXX.git#main>
+direct:<https://github.com/username/XXX.git#main>
 
 ```
