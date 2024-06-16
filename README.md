@@ -1,4 +1,4 @@
-# yayy 项目创建
+# yayy CLI
 
 ## Install
 
