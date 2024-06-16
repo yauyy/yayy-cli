@@ -1,0 +1,30 @@
+{
+  "name": "yayy-cli",
+  "version": "0.0.1",
+  "description": "项目搭建工具",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "bin": {
+    "ya": "./bin/index.js",
+    "yayy": "./bin/index.js"
+  },
+  "keywords": ["cli", "vue", "project"],
+  "author": "yauyy",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yauyy/yayy-cli.git"
+  },
+  "dependencies": {
+    "cac": "^6.7.14",
+    "download-git-repo": "^3.0.2",
+    "figlet": "^1.7.0",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^9.2.23",
+    "ora": "^8.0.1",
+    "picocolors": "^1.0.1"
+  }
+}
