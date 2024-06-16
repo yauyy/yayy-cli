@@ -8,10 +8,14 @@
     "dev": "node index.js"
   },
   "bin": {
-    "ya": "./bin/index.js",
-    "yayy": "./bin/index.js"
+    "ya": "bin/index.js",
+    "yayy": "bin/index.js"
   },
-  "keywords": ["cli", "vue", "project"],
+  "keywords": [
+    "cli",
+    "vue",
+    "project"
+  ],
   "author": "yauyy",
   "license": "MIT",
   "homepage": "https://github.com/yauyy/yayy-cli",
