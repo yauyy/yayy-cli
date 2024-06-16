@@ -39,6 +39,6 @@ direct:https://github.com/usename/XXX.git
 ```txt
 解决：下载一个指定分支。
 例如：
-direct:<https://github.com/luochenLing/XXX.git#main>
+direct:<https://github.com/usename/XXX.git#main>
 
 ```
