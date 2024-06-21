@@ -22,23 +22,5 @@ yayy create <project-name>
 - [fs-extra](https://github.com/jprichardson/node-fs-extra): 是一个用于操作文件的库，它是 Node.js 的 fs 模块的扩展
 - [ora](https://github.com/sindresorhus/ora): 是一个在命令行界面创建优雅的 loading 库
 - [picocolors](https://github.com/alexeyraspopov/picocolors): 是一个用于在终端中添加颜色的库,比chalk更轻量
-- [download-git-repo](https://gitlab.com/flippidippi/download-git-repo): 是一个用于下载 Git 仓库的库
-
-## FAQ
-
-### 1.Error: 'git clone' failed with status 128
-
-```txt
-解决：地址要保证使用的是https模式，地址加前缀。
-例如：
-direct:https://github.com/username/XXX.git
-```
-
-### 2.Error: 'git checkout' failed with status 1
-
-```txt
-解决：下载一个指定分支。
-例如：
-direct:<https://github.com/username/XXX.git#main>
-
-```
+- [axios](https://github.com/axios/axios): 是一个用于发起 HTTP 请求的库
+- [adm-zip](https://github.com/cthackers/adm-zip): 是一个用于压缩和解压缩 zip 文件的库
