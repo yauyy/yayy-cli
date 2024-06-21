@@ -1,6 +1,6 @@
 {
   "name": "yayy-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "项目搭建工具",
   "main": "index.js",
   "type": "module",
