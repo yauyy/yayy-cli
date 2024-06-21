@@ -5,18 +5,21 @@ import cac from 'cac';
 import iq from 'inquirer';
 import fs from 'fs-extra';
 import ora from 'ora';
-import downloadGit from 'download-git-repo';
+import axios from 'axios';
+import AdmZip from 'adm-zip';
 import { PROJECT_TEMPLATES } from './constants.js';
 
-const version = fs.readJsonSync(new URL('../package.json', import.meta.url)).version;
+const version = fs.readJsonSync(
+  new URL('../package.json', import.meta.url)
+).version;
 
 export const printHeader = () => {
   const text = figlet.textSync('hi~ Ya cli.', {
     horizontalLayout: 'full',
-  })
+  });
 
   console.log(pico.green(text));
-}
+};
 
 export const helpCmd = (cb) => {
   return new Promise((resolve) => {
@@ -32,9 +35,8 @@ export const helpCmd = (cb) => {
     });
     cli.version(version);
     cli.parse();
-  })
+  });
 };
-
 
 export const inqurieProject = async (projectName) => {
   const res = await iq.prompt([
@@ -62,8 +64,8 @@ export const inqurieProject = async (projectName) => {
   ]);
   return {
     ...res,
-    projectName: projectName || res.projectName
-  }
+    projectName: projectName || res.projectName,
+  };
 };
 
 export const verifyDirectory = (projectName) => {
@@ -73,7 +75,7 @@ export const verifyDirectory = (projectName) => {
     console.log(pico.red(`项目${projectName}已存在，请重新输入项目名称`));
     process.exit(1);
   }
-}
+};
 
 export const downloadTemplate = async (anwers) => {
   const rpo = PROJECT_TEMPLATES.find((item) => item.name === anwers.template);
@@ -82,12 +84,31 @@ export const downloadTemplate = async (anwers) => {
     process.exit(1);
   }
   const spinner = ora('正在下载模板').start();
-  downloadGit(rpo.source, anwers.projectName, { clone: true }, (err) => {
-    if (err) {
-      spinner.fail(pico.red('模板下载失败'));
-      process.exit(1);
-    }
+  try {
+    await downloadRepo(rpo, anwers.projectName);
     spinner.succeed(pico.green('模板下载成功'));
+
     console.log(pico.cyan(`Run: cd ${anwers.projectName} && pnpm install`));
-  });
+  } catch (error) {
+    console.log(error, 'error');
+    spinner.fail(pico.red('模板下载失败'));
+    process.exit(1);
+  }
 };
+
+async function downloadRepo(repo, projectName) {
+  const response = await axios({
+    method: 'get',
+    url: repo.zipUrl,
+    responseType: 'arraybuffer',
+  });
+  const zip = new AdmZip(response.data);
+  const projectZipPath = path.join(projectName);
+  const mainEntry = zip.getEntries()[0].entryName;
+  zip.extractAllTo(projectZipPath, true);
+  const targetPath = path.join(projectZipPath, mainEntry);
+  fs.copySync(targetPath, projectZipPath, {
+    overwrite: true,
+  });
+  fs.removeSync(targetPath);
+}

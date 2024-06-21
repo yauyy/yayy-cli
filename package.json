@@ -1,6 +1,6 @@
 {
   "name": "yayy-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "项目搭建工具",
   "main": "index.js",
   "type": "module",
@@ -24,8 +24,9 @@
     "url": "git+https://github.com/yauyy/yayy-cli.git"
   },
   "dependencies": {
+    "adm-zip": "^0.5.14",
+    "axios": "^1.7.2",
     "cac": "^6.7.14",
-    "download-git-repo": "^3.0.2",
     "figlet": "^1.7.0",
     "fs-extra": "^11.2.0",
     "inquirer": "^9.2.23",
